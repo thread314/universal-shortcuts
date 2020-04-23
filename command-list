@@ -1,15 +1,38 @@
+- Tabs - 
+Open new tab
+Select previous tab
+Select next tab
+Shift tab left
+Shift tab right
+Select first tab
+Select last tab
+Select nth tab
+Close current tab
 
-- Tabs - new, select left/right, shift left right, select first, select last, tab number x
-- Buffers/history
-- open/new/close/save/save as etc 
-- Search for file
-- Search in file
-- top/bottom of file, page up/page down/search, 
-- copy current location name/edit current location name
-- Save session/load session 
-- Media shortcuts, for media software
-- Messaging/email app
-- Screen/split management: i3, tmux, emacs, vim etc
-- Move cursor/selector up/down/left/right
-- This is a good list of keyboard shortcuts - https://en.wikipedia.org/wiki/Table_of_keyboard_shortcuts
-- home
+- Buffers/history - 
+Previous buffer/history 
+Next buffer/history
+Close current buffer
+Find 
+
+- File operations - 
+Open file
+New file
+Close
+Save
+Save as
+Search for file
+Copy current location name/edit current location name
+Save session/load session 
+
+- View -
+Scroll forward
+Scroll back
+Find in file
+Go to top of file
+Go to bottom of file
+Page up
+Page down
+Zoom in
+Zoom out
+Reset Zoom
