@@ -1,15 +1,10 @@
 vim = App.new
-vim.unmapcommand = ":unmap <?>"
-vim.mapcommand = ":map <?> <!>"
-vim.dotfilelocation = "~/.vimrc"
-vim.defaultmodifier = "<leader><?>"
-vim.OpenNewTab[:function] = ":tabnew<CR>"
-
-
-
+#vim.unmapcommand = ":unmap <?>"
+#vim.mapcommand = ":map <?> <!>"
+#vim.dotfilelocation = "~/.vimrc"
+#vim.defaultmodifier = "<leader><?>"
+vim.opennewtab[:function] = ":tabnew<CR>"
 vim.write_shortcuts
-
-
 
 
 #  :OpenNewTab => {:defaultkey => "t"},

@@ -1,36 +1,34 @@
 #Default shortcuts
-$commands = {
-  :OpenNewTab => {:defaultkey => "t"},
-  :SelectPreviousTab => {:defaultkey => "j"},
-  :SelectNextTab => {:defaultkey => "k"},
-  :ShiftTabLeft => {:defaultkey => ","},
-  :ShiftTabRight => {:defaultkey => "."},
-  :CloseCurrentTab => {:defaultkey => "w"}
-}
-
-class App
-
-  attr_accessor :unmapcommand, :mapcommand, :dotfilelocation, :defaultmodifier
-
-  #initialize and set each default shortcut
+class Commands 
+  attr_accessor :opennewtab, :selectprevioustab 
   def initialize
-    @attributes = $commands
-    @attributes.each do |k,v|
-      self.class.send :define_method, k do v end
-    end
+    @opennewtab = {:defaultkey => "t"}
+    @selectprevioustab = {:defaultkey => "j"}
+#  :SelectNextTab => {:defaultkey => "k"},
+#  :ShiftTabLeft => {:defaultkey => ","},
+#  :ShiftTabRight => {:defaultkey => "."},
+#  :CloseCurrentTab => {:defaultkey => "w"}
   end
+end
 
+class App < Commands
+  attr_accessor :unmapcommand, :mapcommand, :dotfilelocation, :defaultmodifier
   def write_shortcuts
-    $commands.each do |i, j| 
-      if function = self.OpenNewTab[:function]
-        command = self.OpenNewTab[:defaultkey]
-        shortcut = self.defaultmodifier.gsub("<?>",command) 
-        line = self.mapcommand.gsub("<?>",shortcut)
-        puts line = line.gsub("<!>", function)
-      end
+    self.instance_variables.map do |attribute|
+      puts self.instance_variable_get(attribute)[:defaultkey]
+      puts self.instance_variable_get(attribute)[:function]
+
+
+#      p attribute
+#      p self[attribute]
+#      if function = key[:function]
+#        command = self.key[:defaultkey]
+#        shortcut = self.defaultmodifier.gsub("<?>",command) 
+#        line = self.mapcommand.gsub("<?>",shortcut)
+#        puts line = line.gsub("<!>", function)
+#      end
     end
   end
-
 end
 
 load "vim.rb"
