@@ -1,6 +1,0 @@
-{
-	"Commands":
-	{"Open New Tab": "t", "Select Previous Tab": "j", "Select Next Tab": "k", "Shift Tab Left": ",", "Shift Tab Right": ".", "Close Current Tab": "w" }
-},
-	"vim": {"DotFileLocation": "~/.vimrc", "DefaultModifier": "<leader>?", "CustomKeys": [,,,,,]}
-}
