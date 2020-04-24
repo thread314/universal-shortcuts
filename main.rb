@@ -16,19 +16,13 @@ class App < Commands
   attr_accessor :unmapcommand, :mapcommand, :dotfilelocation, :defaultmodifier
   def write_shortcuts
     self.instance_variables.map do |attribute|
-      if (attribute.to_s == "@unmapcommand") || (attribute.to_s == "@mapcommand") || (attribute.to_s == "@dotfilelocation") || (attribute.to_s == "@defaultmodifier")
-        puts "blank"
-      else
-      puts self.instance_variable_get(attribute)[:defaultkey]
-      puts self.instance_variable_get(attribute)[:function]
-#      p attribute
-#      p self[attribute]
-#      if function = key[:function]
-#        command = self.key[:defaultkey]
-#        shortcut = self.defaultmodifier.gsub("<?>",command) 
-#        line = self.mapcommand.gsub("<?>",shortcut)
-#        puts line = line.gsub("<!>", function)
-#      end
+      unless (attribute.to_s == "@unmapcommand") || (attribute.to_s == "@mapcommand") || (attribute.to_s == "@dotfilelocation") || (attribute.to_s == "@defaultmodifier")
+        if function = self.instance_variable_get(attribute)[:function]
+          command = self.instance_variable_get(attribute)[:defaultkey]
+          shortcut = self.defaultmodifier.gsub("<?>",command) 
+          line = self.mapcommand.gsub("<?>",shortcut)
+          puts line = line.gsub("<!>", function)
+        end
       end
     end
   end
