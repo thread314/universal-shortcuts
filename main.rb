@@ -1,13 +1,18 @@
 #Default shortcuts
 class Commands 
-  attr_accessor :opennewtab, :selectprevioustab, :selectnexttab, :shifttableft, :shifttabright, :closecurrenttab
+  attr_accessor :opennewtab, :selectprevioustab, :selectnexttab, :shifttableft, :shifttabright, :closecurrenttab, :selectfirsttab, :selectlasttab, :bufferprevious, :buffernext, :bufferclose
   def initialize
-    @opennewtab = {:defaultkey => "t"}
+    @opennewtab = {:defaultkey => "o"}
     @selectprevioustab = {:defaultkey => "j"}
     @selectnexttab = {:defaultkey => "k"}
     @shifttableft = {:defaultkey => ","}
     @shifttabright = {:defaultkey => "."}
-    @closecurrenttab = {:defaultkey => "w"}
+    @closecurrenttab = {:defaultkey => "x"}
+    @selectfirsttab = {:defaultkey => "0"}
+    @selectlasttab = {:defaultkey => "$"}
+    @buffernext = {:defaultkey => "l"}
+    @bufferprevious = {:defaultkey => "h"}
+    @bufferclose = {:defaultkey => "w"}
   end
 end
 
@@ -28,9 +33,9 @@ class App < Commands
       end
     end
     puts dotlines += "#{self.commentmarker*5} Universal Shortcuts end here\n\n"
-    f = File.open(File.expand_path(self.dotfilelocation), 'a')
-    f.write(dotlines)
-    f.close
+#    f = File.open(File.expand_path(self.dotfilelocation), 'a')
+#    f.write(dotlines)
+#    f.close
   end
 end
 

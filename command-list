@@ -1,18 +1,6 @@
 - Tabs - 
-Open new tab
-Select previous tab
-Select next tab
-Shift tab left
-Shift tab right
-Select first tab
-Select last tab
-Select nth tab
-Close current tab
 
 - Buffers/history - 
-Previous buffer/history 
-Next buffer/history
-Close current buffer
 Find 
 
 - File operations - 
@@ -36,3 +24,6 @@ Page down
 Zoom in
 Zoom out
 Reset Zoom
+
+- Window Management -
+Screen/split management: i3, tmux, emacs, vim etc
