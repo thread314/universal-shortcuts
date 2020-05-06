@@ -1,29 +1,13 @@
-- Tabs - 
-
-- Buffers/history - 
-Find 
-
-- File operations - 
-Open file
-New file
-Close
-Save
-Save as
-Search for file
-Copy current location name/edit current location name
-Save session/load session 
-
-- View -
-Scroll forward
-Scroll back
-Find in file
-Go to top of file
-Go to bottom of file
-Page up
-Page down
-Zoom in
-Zoom out
-Reset Zoom
-
 - Window Management -
 Screen/split management: i3, tmux, emacs, vim etc
+
+- copy/pasting - 
+undo
+redo
+copy
+paste
+cut
+select all
+
+
+- Messaging - 

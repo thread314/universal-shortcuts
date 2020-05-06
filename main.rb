@@ -1,5 +1,6 @@
 #Default shortcuts
-class Commands 
+
+module Tabs
   attr_accessor :opennewtab, :selectprevioustab, :selectnexttab, :shifttableft, :shifttabright, :closecurrenttab, :selectfirsttab, :selectlasttab, :bufferprevious, :buffernext, :bufferclose
   def initialize
     @opennewtab = {:defaultkey => "o"}
@@ -16,8 +17,41 @@ class Commands
   end
 end
 
+module View
+  attr_accessor :stepforward, :stepback, :jumpforward, :jumpback, :find, :gotostart, :gotoend, :zoomin, :zoomout, :resetzoom
+  def initialize
+    @stepforward = {:defaultkey => "e"}
+    @stepback = {:defaultkey => "y"}
+    @jumpforward = {:defaultkey => "f"}
+    @jumpback = {:defaultkey => "b"}
+    @find = {:defaultkey => "/"}
+    @gotostart = {:defaultkey => "gg"}
+    @gotoend = {:defaultkey => "G"}
+    @zoomin = {:defaultkey => "="}
+    @zoomout = {:defaultkey => "-"}
+    @resetzoom = {:defaultkey => "0"}
+  end
+end
+
+module Files
+  attr_accessor :openfile, :newfile, :closefile, :savefile, :savefileas, :searchforfile, :savesession, :loadsession
+  def initialize
+    @openfile = {:defaultkey => "" }
+    @newfile = {:defaultkey => "" }
+    @closefile = {:defaultkey => "" }
+    @savefile = {:defaultkey => "" }
+    @savefileas = {:defaultkey => "" }
+    @searchforfile = {:defaultkey => "" }
+    @savesession = {:defaultkey => "" }
+    @loadsession = {:defaultkey => "" }
+  end
+end
+
 #Assign shortcuts to an individual app
-class App < Commands
+class App 
+  include Tabs
+  include View
+  include Files
   attr_accessor :unmapcommand, :mapcommand, :dotfilelocation, :defaultmodifier, :commentmarker
   def write_shortcuts
     dotlines = "\n#{self.commentmarker*5} Universal Shortcuts start here\n"
@@ -40,3 +74,4 @@ class App < Commands
 end
 
 load "vim.rb"
+load "kitty.rb"

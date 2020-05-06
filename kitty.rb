@@ -2,28 +2,28 @@
 kitty = App.new
 
 #Define app specific variables
-vim.unmapcommand = ":unmap <?>"
-vim.mapcommand = ":map <?> <!>"
-vim.dotfilelocation = "~/.vimrc"
-vim.defaultmodifier = "<leader><?>"
-vim.commentmarker = "\""
+kitty.unmapcommand = ""
+kitty.mapcommand = "map <?> <!>"
+kitty.dotfilelocation = "~/.config/kitty/kitty.conf"
+kitty.defaultmodifier = "ctrl+shift+<?>"
+kitty.commentmarker = "#"
 
 #Assign the functions to each command
 
 #Tabs
-vim.opennewtab[:function] = ":tabnew<CR>"
-vim.selectprevioustab[:function] = ":tabprev<CR>" 
-vim.selectnexttab[:function] = ":tabnext<CR>" 
-vim.shifttableft[:function] = ":-tabmove<CR>" 
-vim.shifttabright[:function] = ":+tabmove<CR>" 
-vim.closecurrenttab[:function] = ":tabclose<CR>" 
-vim.selectfirsttab[:function] = ":tabfirst<CR>" 
-vim.selectlasttab[:function] = ":tablast<CR>" 
+kitty.opennewtab[:function] = "new_tab_with_cwd"
+kitty.selectprevioustab[:function] = "previous_tab" 
+kitty.selectnexttab[:function] = "next_tab" 
+kitty.shifttableft[:function] = "move_tab_backward" 
+kitty.shifttabright[:function] = "move_tab_forward" 
+kitty.closecurrenttab[:function] = "close_tab" 
+kitty.selectfirsttab[:function] = "goto_tab 1" 
+kitty.selectlasttab[:function] = "goto_tab 99" 
 
 #Buffers
-vim.buffernext[:function] = ":bnext<CR>"
-vim.bufferprevious[:function] = ":bprevious<CR>"
-vim.bufferclose[:function] = ":bd<CR>"
+kitty.buffernext[:function] = ""
+kitty.bufferprevious[:function] = ""
+kitty.bufferclose[:function] = ""
 
 #Write the shortucts to the dotfile
-vim.write_shortcuts
+kitty.write_shortcuts
