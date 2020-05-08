@@ -36,12 +36,13 @@ module View
 end
 
 module Files
-  attr_accessor :openfile, :newfile, :closefile, :savefile, :savefileas, :searchforfile, :savesession, :loadsession
+  attr_accessor :openfile, :newfile, :savefile, :saveandclose, :closenosave, :savefileas, :searchforfile, :savesession, :loadsession
   def initialize
     @openfile = {:defaultkey => "o" }
     @newfile = {:defaultkey => "" }
-    @closefile = {:defaultkey => "" }
     @savefile = {:defaultkey => "" }
+    @saveandclose = {:defaultkey => "" }
+    @closenosave = {:defaultkey => "" }
     @savefileas = {:defaultkey => "" }
     @searchforfile = {:defaultkey => "" }
     @savesession = {:defaultkey => "" }
@@ -60,7 +61,10 @@ class App
     dotlines = "\n#{self.commentmarker*5} Universal Shortcuts start here\n"
     self.instance_variables.map do |attribute|
       unless (attribute.to_s == "@unmapcommand") || (attribute.to_s == "@mapcommand") || (attribute.to_s == "@dotfilelocation") || (attribute.to_s == "@defaultmodifier") || (attribute.to_s == "@commentmarker") 
-        if (function = self.instance_variable_get(attribute)[:function]) && self.instance_variable_get(attribute)[:defaultkey].length > 0
+        if (command = self.instance_variable_get(attribute)[:defaultkey]) &&
+            (command.length > 0) && 
+            (function = self.instance_variable_get(attribute)[:function]) &&
+            (function.length > 0)
           command = self.instance_variable_get(attribute)[:defaultkey]
           shortcut = self.defaultmodifier.gsub("<?>",command) 
           line = self.mapcommand.gsub("<?>",shortcut)
@@ -70,9 +74,9 @@ class App
       end
     end
     puts dotlines += "#{self.commentmarker*5} Universal Shortcuts end here\n\n"
-#    f = File.open(File.expand_path(self.dotfilelocation), 'a')
-#    f.write(dotlines)
-#    f.close
+    #    f = File.open(File.expand_path(self.dotfilelocation), 'a')
+    #    f.write(dotlines)
+    #    f.close
   end
 end
 

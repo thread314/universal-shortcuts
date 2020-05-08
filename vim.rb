@@ -23,5 +23,28 @@ vim.buffernext[:function] = ":bnext<CR>"
 vim.bufferprevious[:function] = ":bprevious<CR>"
 vim.bufferclose[:function] = ":bd<CR>"
 
+#View
+vim.stepforward[:function] = "<C-E>" 
+vim.stepback[:function] = "<C-Y>" 
+vim.jumpforward[:function] = "<C-F>" 
+vim.jumpback[:function] = "<C-B>" 
+vim.find[:function] = "/" 
+vim.gotostart[:function] = "gg" 
+vim.gotoend[:function] = "G" 
+vim.zoomin[:function] = "" 
+vim.zoomout[:function] = "" 
+vim.resetzoom[:function] = "" 
+
+#Files
+vim.openfile[:function] = ":o " 
+vim.newfile[:function] = ":o " 
+vim.savefile[:function] = ":w<CR> " 
+vim.saveandclose[:function] = ":wq<CR>" 
+vim.closenosave[:function] = ":q!<CR>" 
+vim.savefileas[:function] = ":w " 
+vim.searchforfile[:function] = "" 
+vim.savesession[:function] = ":mks " 
+vim.loadsession[:function] = ":source " 
+
 #Write the shortucts to the dotfile
 vim.write_shortcuts
