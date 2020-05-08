@@ -21,9 +21,9 @@ kitty.selectfirsttab[:function] = "goto_tab 1"
 kitty.selectlasttab[:function] = "goto_tab 99" 
 
 #Buffers
-kitty.buffernext[:function] = ""
-kitty.bufferprevious[:function] = ""
-kitty.bufferclose[:function] = ""
+#kitty.buffernext[:function] = ""
+#kitty.bufferprevious[:function] = ""
+#kitty.bufferclose[:function] = ""
 
 #Write the shortucts to the dotfile
 kitty.write_shortcuts
