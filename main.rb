@@ -14,6 +14,7 @@ module Tabs
     @buffernext = {:defaultkey => "l"}
     @bufferprevious = {:defaultkey => "h"}
     @bufferclose = {:defaultkey => "w"}
+    super
   end
 end
 
@@ -30,13 +31,14 @@ module View
     @zoomin = {:defaultkey => "="}
     @zoomout = {:defaultkey => "-"}
     @resetzoom = {:defaultkey => "0"}
+    super
   end
 end
 
 module Files
   attr_accessor :openfile, :newfile, :closefile, :savefile, :savefileas, :searchforfile, :savesession, :loadsession
   def initialize
-    @openfile = {:defaultkey => "" }
+    @openfile = {:defaultkey => "o" }
     @newfile = {:defaultkey => "" }
     @closefile = {:defaultkey => "" }
     @savefile = {:defaultkey => "" }
@@ -44,6 +46,7 @@ module Files
     @searchforfile = {:defaultkey => "" }
     @savesession = {:defaultkey => "" }
     @loadsession = {:defaultkey => "" }
+    super
   end
 end
 
@@ -55,6 +58,7 @@ class App
   attr_accessor :unmapcommand, :mapcommand, :dotfilelocation, :defaultmodifier, :commentmarker
   def write_shortcuts
     dotlines = "\n#{self.commentmarker*5} Universal Shortcuts start here\n"
+    puts self.instance_variables
     self.instance_variables.map do |attribute|
       unless (attribute.to_s == "@unmapcommand") || (attribute.to_s == "@mapcommand") || (attribute.to_s == "@dotfilelocation") || (attribute.to_s == "@defaultmodifier") || (attribute.to_s == "@commentmarker") 
         if function = self.instance_variable_get(attribute)[:function]
@@ -74,4 +78,4 @@ class App
 end
 
 load "vim.rb"
-load "kitty.rb"
+#load "kitty.rb"
