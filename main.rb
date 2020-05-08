@@ -82,3 +82,4 @@ end
 
 load "vim.rb"
 load "kitty.rb"
+load "emacs.rb"
