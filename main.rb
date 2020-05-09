@@ -83,3 +83,5 @@ end
 load "vim.rb"
 load "kitty.rb"
 load "emacs.rb"
+load "qutebrowser.rb"
+load "ranger.rb"
