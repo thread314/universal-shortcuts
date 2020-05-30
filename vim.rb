@@ -1,5 +1,8 @@
 #Initialise instance of the app
-vim = App.new
+vim = OpenStruct.new
+$tabshash.each { |k,v| vim.public_send("#{k}=", v) }
+$fileshash.each { |k,v| vim.public_send("#{k}=", v) }
+$viewshash.each { |k,v| vim.public_send("#{k}=", v) }
 
 #Define app specific variables
 vim.unmapcommand = ":unmap <?>"
@@ -47,4 +50,4 @@ vim.savesession[:function] = ":mks "
 vim.loadsession[:function] = ":source " 
 
 #Write the shortucts to the dotfile
-vim.write_shortcuts
+write_shortcuts(vim)
