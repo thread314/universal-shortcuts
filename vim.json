@@ -1,0 +1,105 @@
+{
+  "vimvariableshash": {
+    "unmapcommand": ":unmap <?>",
+    "mapcommand": ":map <?> <!>",
+    "dotfilelocation": "~/.vimrc",
+    "defaultmodifier": "<leader><?>",
+    "commentmarker": "\""
+  },
+  "vimfileshash": {
+    "openfile": {
+      "function": ":o "
+    },
+    "newfile": {
+      "function": ":o "
+    },
+    "savefile": {
+      "function": ":w<CR> "
+    },
+    "saveandclose": {
+      "function": ":wq<CR>"
+    },
+    "closenosave": {
+      "function": ":q!<CR>"
+    },
+    "savefileas": {
+      "function": ":w "
+    },
+    "searchforfile": {
+      "function": ""
+    },
+    "savesession": {
+      "function": ":mks "
+    },
+    "loadsession": {
+      "function": ":source "
+    }
+  },
+  "vimviewshash": {
+    "stepforward": {
+      "function": "<C-E>"
+    },
+    "stepback": {
+      "function": "<C-Y>"
+    },
+    "jumpforward": {
+      "function": "<C-F>"
+    },
+    "jumpback": {
+      "function": "<C-B>"
+    },
+    "find": {
+      "function": "/"
+    },
+    "gotostart": {
+      "function": "gg"
+    },
+    "gotoend": {
+      "function": "G"
+    },
+    "zoomin": {
+      "function": ""
+    },
+    "zoomout": {
+      "function": ""
+    },
+    "resetzoom": {
+      "function": ""
+    }
+  },
+  "vimtabshash": {
+    "opennewtab": {
+      "function": ":tabnew<CR>"
+    },
+    "selectprevioustab": {
+      "function": ":tabprev<CR>"
+    },
+    "selectnexttab": {
+      "function": ":tabnext<CR>"
+    },
+    "shifttableft": {
+      "function": ":-tabmove<CR>"
+    },
+    "shifttabright": {
+      "function": ":+tabmove<CR>"
+    },
+    "closecurrenttab": {
+      "function": ":tabclose<CR>"
+    },
+    "selectfirsttab": {
+      "function": ":tabfirst<CR>"
+    },
+    "selectlasttab": {
+      "function": ":tablast<CR>"
+    },
+    "buffernext": {
+      "function": ":bnext<CR>"
+    },
+    "bufferprevious": {
+      "function": ":bprevious<CR>"
+    },
+    "bufferclose": {
+      "function": ":bd<CR>"
+    }
+  }
+}

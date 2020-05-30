@@ -1,0 +1,98 @@
+{
+  "tabshash": {
+    "opennewtab": {
+      "defaultkey": "o"
+    },
+    "selectprevioustab": {
+      "defaultkey": "j"
+    },
+    "selectnexttab": {
+      "defaultkey": "k"
+    },
+    "shifttableft": {
+      "defaultkey": ","
+    },
+    "shifttabright": {
+      "defaultkey": "."
+    },
+    "closecurrenttab": {
+      "defaultkey": "x"
+    },
+    "selectfirsttab": {
+      "defaultkey": "0"
+    },
+    "selectlasttab": {
+      "defaultkey": "$"
+    },
+    "buffernext": {
+      "defaultkey": "l"
+    },
+    "bufferprevious": {
+      "defaultkey": "h"
+    },
+    "bufferclose": {
+      "defaultkey": "w"
+    }
+  },
+  "viewshash": {
+    "stepforward": {
+      "defaultkey": "e"
+    },
+    "stepback": {
+      "defaultkey": "y"
+    },
+    "jumpforward": {
+      "defaultkey": "f"
+    },
+    "jumpback": {
+      "defaultkey": "b"
+    },
+    "find": {
+      "defaultkey": "/"
+    },
+    "gotostart": {
+      "defaultkey": "gg"
+    },
+    "gotoend": {
+      "defaultkey": "G"
+    },
+    "zoomin": {
+      "defaultkey": "="
+    },
+    "zoomout": {
+      "defaultkey": "-"
+    },
+    "resetzoom": {
+      "defaultkey": "0"
+    }
+  },
+  "fileshash": {
+    "openfile": {
+      "defaultkey": "o"
+    },
+    "newfile": {
+      "defaultkey": "n"
+    },
+    "savefile": {
+      "defaultkey": "w"
+    },
+    "saveandclose": {
+      "defaultkey": "q"
+    },
+    "closenosave": {
+      "defaultkey": "Q"
+    },
+    "savefileas": {
+      "defaultkey": "a"
+    },
+    "searchforfile": {
+      "defaultkey": "f"
+    },
+    "savesession": {
+      "defaultkey": "ss"
+    },
+    "loadsession": {
+      "defaultkey": ""
+    }
+  }
+}
