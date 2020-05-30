@@ -25,7 +25,7 @@ $viewshash = {
   "gotoend" => {:defaultkey => "G"},
   "zoomin" => {:defaultkey => "="},
   "zoomout" => {:defaultkey => "-"},
-  "resetzoom" => {:defaultkey => "0"},
+  "resetzoom" => {:defaultkey => "0"}
 }
 
 $fileshash = {
@@ -37,7 +37,7 @@ $fileshash = {
   "savefileas" => {:defaultkey => "" },
   "searchforfile" => {:defaultkey => "" },
   "savesession" => {:defaultkey => "" },
-  "loadsession" => {:defaultkey => "" },
+  "loadsession" => {:defaultkey => "" }
 }
 
 
@@ -63,6 +63,13 @@ def write_shortcuts(app)
   #    f.close
 end
 
+def injectfunctions(shortcuthash,functionhash)
+  combinedhash = {}
+  functionhash.each do |k,v|
+    combinedhash[k] = functionhash[k].merge(shortcuthash[k])
+  end
+  return combinedhash
+end
 
 load "vim.rb"
 #load "kitty.rb"

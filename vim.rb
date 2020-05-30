@@ -1,8 +1,5 @@
 #Initialise instance of the app
 vim = OpenStruct.new
-$tabshash.each { |k,v| vim.public_send("#{k}=", v) }
-$fileshash.each { |k,v| vim.public_send("#{k}=", v) }
-$viewshash.each { |k,v| vim.public_send("#{k}=", v) }
 
 #Define app specific variables
 vim.unmapcommand = ":unmap <?>"
@@ -14,40 +11,55 @@ vim.commentmarker = "\""
 #Assign the functions to each command
 
 #Tabs
-vim.opennewtab[:function] = ":tabnew<CR>"
-vim.selectprevioustab[:function] = ":tabprev<CR>" 
-vim.selectnexttab[:function] = ":tabnext<CR>" 
-vim.shifttableft[:function] = ":-tabmove<CR>" 
-vim.shifttabright[:function] = ":+tabmove<CR>" 
-vim.closecurrenttab[:function] = ":tabclose<CR>" 
-vim.selectfirsttab[:function] = ":tabfirst<CR>" 
-vim.selectlasttab[:function] = ":tablast<CR>" 
-vim.buffernext[:function] = ":bnext<CR>"
-vim.bufferprevious[:function] = ":bprevious<CR>"
-vim.bufferclose[:function] = ":bd<CR>"
+vimtabshash = {
+"opennewtab" => {:function => ":tabnew<CR>"},
+"selectprevioustab" => {:function => ":tabprev<CR>"},
+"selectnexttab" => {:function => ":tabnext<CR>"},
+"shifttableft" => {:function => ":-tabmove<CR>"},
+"shifttabright" => {:function => ":+tabmove<CR>"},
+"closecurrenttab" => {:function => ":tabclose<CR>"},
+"selectfirsttab" => {:function => ":tabfirst<CR>"},
+"selectlasttab" => {:function => ":tablast<CR>"},
+"buffernext" => {:function => ":bnext<CR>"},
+"bufferprevious" => {:function => ":bprevious<CR>"},
+"bufferclose" => {:function => ":bd<CR>"}
+}
 
 #View
-vim.stepforward[:function] = "<C-E>" 
-vim.stepback[:function] = "<C-Y>" 
-vim.jumpforward[:function] = "<C-F>" 
-vim.jumpback[:function] = "<C-B>" 
-vim.find[:function] = "/" 
-vim.gotostart[:function] = "gg" 
-vim.gotoend[:function] = "G" 
-vim.zoomin[:function] = "" 
-vim.zoomout[:function] = "" 
-vim.resetzoom[:function] = "" 
+vimviewshash = {
+"stepforward" => {:function => "<C-E>" },
+"stepback" => {:function => "<C-Y>" },
+"jumpforward" => {:function => "<C-F>" },
+"jumpback" => {:function => "<C-B>" },
+"find" => {:function => "/" },
+"gotostart" => {:function => "gg" },
+"gotoend" => {:function => "G" },
+"zoomin" => {:function => "" },
+"zoomout" => {:function => "" },
+"resetzoom" => {:function => "" },
+}
 
 #Files
-vim.openfile[:function] = ":o " 
-vim.newfile[:function] = ":o " 
-vim.savefile[:function] = ":w<CR> " 
-vim.saveandclose[:function] = ":wq<CR>" 
-vim.closenosave[:function] = ":q!<CR>" 
-vim.savefileas[:function] = ":w " 
-vim.searchforfile[:function] = "" 
-vim.savesession[:function] = ":mks " 
-vim.loadsession[:function] = ":source " 
+vimfileshash = {
+"openfile" => {:function => ":o " },
+"newfile" => {:function => ":o " },
+"savefile" => {:function => ":w<CR> " },
+"saveandclose" => {:function => ":wq<CR>" },
+"closenosave" => {:function => ":q!<CR>" },
+"savefileas" => {:function => ":w " },
+"searchforfile" => {:function => "" },
+"savesession" => {:function => ":mks " },
+"loadsession" => {:function => ":source " },
+}
 
 #Write the shortucts to the dotfile
+injectfunctions($tabshash,vimtabshash).each { |k,v| vim.public_send("#{k}=", v) }
+puts injectfunctions($fileshash,vimfileshash)
+injectfunctions($fileshash,vimfileshash).each { |k,v| vim.public_send("#{k}=", v) }
+injectfunctions($viewshash,vimviewshash).each { |k,v| vim.public_send("#{k}=", v) }
 write_shortcuts(vim)
+
+
+
+
+

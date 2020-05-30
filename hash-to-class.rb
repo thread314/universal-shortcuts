@@ -11,11 +11,3 @@ shorthash1.each { |k,v| obj.public_send("#{k}=", v) }
 
 obj.first = "pop"
 
-def writeshortcuts(object)
-  object.marshal_dump.each do |attribute,v|
-    puts attribute
-    #puts "#{v} - v"
-  end
-end
-
-writeshortcuts(obj)
