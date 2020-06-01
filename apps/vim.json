@@ -1,12 +1,12 @@
 {
-  "vimvariableshash": {
+  "appvariables": {
     "unmapcommand": ":unmap <?>",
     "mapcommand": ":map <?> <!>",
     "dotfilelocation": "~/.vimrc",
     "defaultmodifier": "<leader><?>",
     "commentmarker": "\""
   },
-  "vimfileshash": {
+  "fileshash": {
     "openfile": {
       "function": ":o "
     },
@@ -35,7 +35,7 @@
       "function": ":source "
     }
   },
-  "vimviewshash": {
+  "viewshash": {
     "stepforward": {
       "function": "<C-E>"
     },
@@ -67,7 +67,7 @@
       "function": ""
     }
   },
-  "vimtabshash": {
+  "tabshash": {
     "opennewtab": {
       "function": ":tabnew<CR>"
     },

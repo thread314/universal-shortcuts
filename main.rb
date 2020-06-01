@@ -32,12 +32,19 @@ def injectfunctions(shortcuthash,functionhash)
   return combinedhash
 end
 
-puts Dir.pwd
-load "apps/vim.rb"
-#load "kitty.rb"
-#load "emacs.rb"
-#load "qutebrowser.rb"
-#load "ranger.rb"
 
-#masterhash = {"vimvariableshash" => vimvariableshash, "vimfileshash" => vimfileshash, "vimviewshash" => vimviewshash, "vimtabshash" => vimtabshash}
-#puts JSON.pretty_generate(masterhash)
+def createappobject(appname)
+  app = OpenStruct.new
+  appsettings = JSON.parse(File.read("apps/#{appname}.json"))
+  appsettings["appvariables"].each { |k,v| app.public_send("#{k}=", v) }
+  injectfunctions($defaultshortcuts["tabshash"],appsettings["tabshash"]).each { |k,v| app.public_send("#{k}=", v) }
+  injectfunctions($defaultshortcuts["fileshash"],appsettings["fileshash"]).each { |k,v| app.public_send("#{k}=", v) }
+  injectfunctions($defaultshortcuts["viewshash"],appsettings["viewshash"]).each { |k,v| app.public_send("#{k}=", v) }
+  write_shortcuts(app)
+end
+
+createappobject("vim")
+createappobject("kitty")
+createappobject("emacs")
+createappobject("ranger")
+createappobject("qutebrowser")
