@@ -1,0 +1,105 @@
+{
+  "appvariables": {
+    "unmapcommand": "",
+    "mapcommand": "config.bind('<?>', '<!>')",
+    "dotfilelocation": "~/.config/qutebrowser/config.py",
+    "defaultmodifier": "<?>",
+    "commentmarker": "#"
+  },
+  "tabshash": {
+    "opennewtab": {
+      "function": "open -t"
+    },
+    "selectprevioustab": {
+      "function": "tab-prev"
+    },
+    "selectnexttab": {
+      "function": "tab-next"
+    },
+    "shifttableft": {
+      "function": "tab-move -"
+    },
+    "shifttabright": {
+      "function": "tab-move +"
+    },
+    "closecurrenttab": {
+      "function": "tab-close"
+    },
+    "selectfirsttab": {
+      "function": "tab-focus 1"
+    },
+    "selectlasttab": {
+      "function": "tab-focus -1"
+    },
+    "buffernext": {
+      "function": "forward"
+    },
+    "bufferprevious": {
+      "function": "back"
+    },
+    "bufferclose": {
+      "function": ""
+    }
+  },
+  "viewshash": {
+    "stepforward": {
+      "function": "scroll down"
+    },
+    "stepback": {
+      "function": "scroll up"
+    },
+    "jumpforward": {
+      "function": "scroll-page 0 1"
+    },
+    "jumpback": {
+      "function": "scroll-page 0 -1"
+    },
+    "find": {
+      "function": "set-cmd-text  =>search "
+    },
+    "gotostart": {
+      "function": "scroll-to-perc 0"
+    },
+    "gotoend": {
+      "function": "scroll-to-perc 100"
+    },
+    "zoomin": {
+      "function": "zoom-in"
+    },
+    "zoomout": {
+      "function": "zoom-out"
+    },
+    "resetzoom": {
+      "function": "zoom"
+    }
+  },
+  "fileshash": {
+    "openfile": {
+      "function": "set-cmd-text  =>open "
+    },
+    "newfile": {
+      "function": "set-cmd-text  =>open -t "
+    },
+    "savefile": {
+      "function": ""
+    },
+    "saveandclose": {
+      "function": ""
+    },
+    "closenosave": {
+      "function": ""
+    },
+    "savefileas": {
+      "function": "download"
+    },
+    "searchforfile": {
+      "function": ""
+    },
+    "savesession": {
+      "function": "set-cmd-text  =>save-session -o "
+    },
+    "loadsession": {
+      "function": "set-cmd-text  =>load-session "
+    }
+  }
+}

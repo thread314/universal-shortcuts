@@ -32,7 +32,8 @@ def injectfunctions(shortcuthash,functionhash)
   return combinedhash
 end
 
-load "vim.rb"
+puts Dir.pwd
+load "apps/vim.rb"
 #load "kitty.rb"
 #load "emacs.rb"
 #load "qutebrowser.rb"

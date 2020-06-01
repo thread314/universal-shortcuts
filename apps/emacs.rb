@@ -1,50 +1,62 @@
 #Initialise instance of the emacs
-emacs = App.new
+require 'json'
+#emacs = App.new
 
 #Define emacs specific variables
-emacs.unmapcommand = ""
-emacs.mapcommand = "(global-set-key (kbd \"<?>\") '<!>)"
-emacs.dotfilelocation = "~/.emacs"
-emacs.defaultmodifier = "C-c C-y C-<?>"
-emacs.commentmarker = ";"
+output = {
+  "appvariables" => {
+    "unmapcommand" => "",
+    "mapcommand" => "(global-set-key (kbd \"<?>\") '<!>)",
+    "dotfilelocation" => "~/.emacs",
+    "defaultmodifier" => "C-c C-y C-<?>",
+    "commentmarker" => ";",
+  },
 
-#Assign the functions to each command
+  #Assign the functions to each command
 
-#Tabs
-emacs.opennewtab[:function] = ""
-emacs.selectprevioustab[:function] = "" 
-emacs.selectnexttab[:function] = "" 
-emacs.shifttableft[:function] = "" 
-emacs.shifttabright[:function] = "" 
-emacs.closecurrenttab[:function] = "" 
-emacs.selectfirsttab[:function] = "" 
-emacs.selectlasttab[:function] = "" 
-emacs.buffernext[:function] = "next-buffer"
-emacs.bufferprevious[:function] = "previous-buffer"
-emacs.bufferclose[:function] = "kill-this-buffer"
+  #Tabs
+  "tabshash" => {
+    "opennewtab" => {"function" => ""},
+    "selectprevioustab" => {"function" => ""},
+    "selectnexttab" => {"function" => "" },
+    "shifttableft" => {"function" => "" },
+    "shifttabright" => {"function" => "" },
+    "closecurrenttab" => {"function" => "" },
+    "selectfirsttab" => {"function" => "" },
+    "selectlasttab" => {"function" => "" },
+    "buffernext" => {"function" => "next-buffer"},
+    "bufferprevious" => {"function" => "previous-buffer"},
+    "bufferclose" => {"function" => "kill-this-buffer"},
+  },
 
-#View
-emacs.stepforward[:function] = "scroll-up-line" 
-emacs.stepback[:function] = "scroll-down-line" 
-emacs.jumpforward[:function] = "scroll-up-command" 
-emacs.jumpback[:function] = "scroll-down-command" 
-emacs.find[:function] = "" 
-emacs.gotostart[:function] = "beginning-of-buffer" 
-emacs.gotoend[:function] = "end-of-buffer" 
-emacs.zoomin[:function] = "text-scale-adjust +" 
-emacs.zoomout[:function] = "text-scale-adjust -" 
-emacs.resetzoom[:function] = "text-scale-adjust 0" 
+  #View
+  "viewshash" => {
+    "stepforward" => {"function" => "scroll-up-line" },
+    "stepback" => {"function" => "scroll-down-line" },
+    "jumpforward" => {"function" => "scroll-up-command" },
+    "jumpback" => {"function" => "scroll-down-command" },
+    "find" => {"function" => "" },
+    "gotostart" => {"function" => "beginning-of-buffer" },
+    "gotoend" => {"function" => "end-of-buffer" },
+    "zoomin" => {"function" => "text-scale-adjust +" },
+    "zoomout" => {"function" => "text-scale-adjust -" },
+    "resetzoom" => {"function" => "text-scale-adjust 0" },
+  },
 
-#Files
-emacs.openfile[:function] = "find-file" 
-emacs.newfile[:function] = "find-file" 
-emacs.savefile[:function] = "save-buffer" 
-emacs.saveandclose[:function] = "save-buffers-kill-emacs" 
-emacs.closenosave[:function] = "kill-emacs" 
-emacs.savefileas[:function] = "mark-whole-buffer 'write-region" 
-emacs.searchforfile[:function] = "isearch-forward" 
-emacs.savesession[:function] = "desktop-save"
-emacs.loadsession[:function] = "desktop-read" 
+  #Files
+  "fileshash" => {
+    "openfile" => {"function" => "find-file" },
+    "newfile" => {"function" => "find-file" },
+    "savefile" => {"function" => "save-buffer" },
+    "saveandclose" => {"function" => "save-buffers-kill-emacs" },
+    "closenosave" => {"function" => "kill-emacs" },
+    "savefileas" => {"function" => "mark-whole-buffer 'write-region" },
+    "searchforfile" => {"function" => "isearch-forward" },
+    "savesession" => {"function" => "desktop-save"},
+    "loadsession" => {"function" => "desktop-read" },
+  }
+  }
 
-#Write the shortucts to the dotfile
-emacs.write_shortcuts
+  puts JSON.pretty_generate(output)
+  #Write the shortucts to the dotfile
+  #emacs.write_shortcuts

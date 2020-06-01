@@ -1,57 +1,68 @@
 #Initialise instance of the app
-qutebrowser = App.new
+require 'json'
+#qutebrowser = App.new
 
 #Define app specific variables
-qutebrowser.unmapcommand = ""
-qutebrowser.mapcommand = "config.bind('<?>', '<!>')"
-qutebrowser.dotfilelocation = "~/.config/qutebrowser/config.py"
-qutebrowser.defaultmodifier = "<?>"
-qutebrowser.commentmarker = "#"
+output = {
+"appvariables" => {
+"unmapcommand" => "",
+"mapcommand" => "config.bind('<?>', '<!>')",
+"dotfilelocation" => "~/.config/qutebrowser/config.py",
+"defaultmodifier" => "<?>",
+"commentmarker" => "#",
+},
 
 #Assign the functions to each command
 
 #Tabs
-qutebrowser.opennewtab[:function] = "open -t"
-qutebrowser.selectprevioustab[:function] = "tab-prev" 
-qutebrowser.selectnexttab[:function] = "tab-next" 
-qutebrowser.shifttableft[:function] = "tab-move -" 
-qutebrowser.shifttabright[:function] = "tab-move +" 
-qutebrowser.closecurrenttab[:function] = "tab-close" 
-qutebrowser.selectfirsttab[:function] = "tab-focus 1" 
-qutebrowser.selectlasttab[:function] = "tab-focus -1" 
-qutebrowser.buffernext[:function] = "forward"
-qutebrowser.bufferprevious[:function] = "back"
-qutebrowser.bufferclose[:function] = ""
+"tabshash" => {
+"opennewtab" => {"function" => "open -t"},
+"selectprevioustab" => {"function" => "tab-prev" },
+"selectnexttab" => {"function" => "tab-next" },
+"shifttableft" => {"function" => "tab-move -" },
+"shifttabright" => {"function" => "tab-move +" },
+"closecurrenttab" => {"function" => "tab-close" },
+"selectfirsttab" => {"function" => "tab-focus 1" },
+"selectlasttab" => {"function" => "tab-focus -1" },
+"buffernext" => {"function" => "forward"},
+"bufferprevious" => {"function" => "back"},
+"bufferclose" => {"function" => ""},
+},
 
 #View
-qutebrowser.stepforward[:function] = "scroll down" 
-qutebrowser.stepback[:function] = "scroll up" 
-qutebrowser.jumpforward[:function] = "scroll-page 0 1" 
-qutebrowser.jumpback[:function] = "scroll-page 0 -1" 
-qutebrowser.find[:function] = "set-cmd-text :search " 
-qutebrowser.gotostart[:function] = "scroll-to-perc 0" 
-qutebrowser.gotoend[:function] = "scroll-to-perc 100" 
-qutebrowser.zoomin[:function] = "zoom-in" 
-qutebrowser.zoomout[:function] = "zoom-out" 
-qutebrowser.resetzoom[:function] = "zoom" 
+"viewshash" => {
+"stepforward" => {"function" => "scroll down" },
+"stepback" => {"function" => "scroll up" },
+"jumpforward" => {"function" => "scroll-page 0 1" },
+"jumpback" => {"function" => "scroll-page 0 -1" },
+"find" => {"function" => "set-cmd-text  =>search " },
+"gotostart" => {"function" => "scroll-to-perc 0" },
+"gotoend" => {"function" => "scroll-to-perc 100" },
+"zoomin" => {"function" => "zoom-in" },
+"zoomout" => {"function" => "zoom-out" },
+"resetzoom" => {"function" => "zoom" },
+},
 
 #Files
-qutebrowser.openfile[:function] = "set-cmd-text :open " 
-qutebrowser.newfile[:function] = "set-cmd-text :open -t " 
-qutebrowser.savefile[:function] = "" 
-qutebrowser.saveandclose[:function] = "" 
-qutebrowser.closenosave[:function] = "" 
-qutebrowser.savefileas[:function] = "download" 
-qutebrowser.searchforfile[:function] = "" 
-qutebrowser.savesession[:function] = "set-cmd-text :save-session -o " 
-qutebrowser.loadsession[:function] = "set-cmd-text :load-session " 
+"fileshash" => {
+"openfile" => {"function" => "set-cmd-text  =>open " },
+"newfile" => {"function" => "set-cmd-text  =>open -t " },
+"savefile" => {"function" => "" },
+"saveandclose" => {"function" => "" },
+"closenosave" => {"function" => "" },
+"savefileas" => {"function" => "download" },
+"searchforfile" => {"function" => "" },
+"savesession" => {"function" => "set-cmd-text  =>save-session -o " },
+"loadsession" => {"function" => "set-cmd-text  =>load-session " },
+}
+}
 
 #Qutebrowser requires direct user configuations via file config.py. Create file if it doesn't exist and load existing user settings. 
-if File.file?("#{ENV['HOME']}/.config/qutebrowser/config.py") == false
-  configfile = File.new("#{ENV['HOME']}/.config/qutebrowser/config.py")
-  configfile.puts("config.load_autoconfig()\n\n")
-  configfile.close
-end
+#if File.file?("#{ENV['HOME']}/.config/qutebrowser/config.py") == false
+#  configfile = File.new("#{ENV['HOME']}/.config/qutebrowser/config.py")
+#  configfile.puts("config.load_autoconfig()\n\n")
+#  configfile.close
+#end
 
+puts JSON.pretty_generate(output)
 #Write the shortucts to the dotfile
-qutebrowser.write_shortcuts
