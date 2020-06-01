@@ -3,7 +3,6 @@ require 'json'
 
 $defaultshortcuts = JSON.parse(File.read('default-shortcuts.json'))
 
-
 def write_shortcuts(app)
   dotlines = "\n#{app.commentmarker*5} Universal Shortcuts start here\n"
   app.marshal_dump.each do |attribute,value|
@@ -38,3 +37,6 @@ load "vim.rb"
 #load "emacs.rb"
 #load "qutebrowser.rb"
 #load "ranger.rb"
+
+#masterhash = {"vimvariableshash" => vimvariableshash, "vimfileshash" => vimfileshash, "vimviewshash" => vimviewshash, "vimtabshash" => vimtabshash}
+#puts JSON.pretty_generate(masterhash)

@@ -11,5 +11,3 @@ injectfunctions($defaultshortcuts["fileshash"],vimsettings["vimfileshash"]).each
 injectfunctions($defaultshortcuts["viewshash"],vimsettings["vimviewshash"]).each { |k,v| vim.public_send("#{k}=", v) }
 write_shortcuts(vim)
 
-#masterhash = {"vimvariableshash" => vimvariableshash, "vimfileshash" => vimfileshash, "vimviewshash" => vimviewshash, "vimtabshash" => vimtabshash}
-#puts JSON.pretty_generate(masterhash)
