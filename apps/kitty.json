@@ -1,5 +1,6 @@
 {
   "appvariables": {
+    "appname": "Kitty",
     "unmapcommand": "",
     "mapcommand": "map <?> <!>",
     "dotfilelocation": "~/.config/kitty/kitty.conf",

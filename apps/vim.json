@@ -1,5 +1,6 @@
 {
   "appvariables": {
+    "appname": "Vim",
     "unmapcommand": ":unmap <?>",
     "mapcommand": ":map <?> <!>",
     "dotfilelocation": "~/.vimrc",

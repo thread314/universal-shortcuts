@@ -1,5 +1,6 @@
 {
   "appvariables": {
+    "appname": "Ranger",
     "unmapcommand": "",
     "mapcommand": "map <?> <!>",
     "dotfilelocation": "~/.config/ranger/rc.conf",

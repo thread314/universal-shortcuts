@@ -1,5 +1,6 @@
 {
   "appvariables": {
+    "appname": "Emacs",
     "unmapcommand": "",
     "mapcommand": "(global-set-key (kbd \"<?>\") '<!>)",
     "dotfilelocation": "~/.emacs",

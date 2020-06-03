@@ -12,16 +12,27 @@ def injectfunctions(shortcuthash,functionhash)
   return combinedhash
 end
 
+#Test for presence of Previous Universal Shortcuts in dotfile and return line number if they exist
+def find_previous_dotlines(file, expression)
+  count = 0
+  file.each_line do |line|
+    count +=1
+    if line.include?(expression)
+      return count
+    end
+  end
+  return nil
+end
+
 #Create object that contains all shortcuts and functions
-def createappobject(appname)
+def create_app_object(appname)
   app = OpenStruct.new
-  app.name = appname
-  appsettings = JSON.parse(File.read("apps/#{appname}.json"))
+  appsettings = JSON.parse(File.read(appname))
   appsettings["appvariables"].each { |k,v| app.public_send("#{k}=", v) }
   injectfunctions($defaultshortcuts["tabshash"],appsettings["tabshash"]).each { |k,v| app.public_send("#{k}=", v) }
   injectfunctions($defaultshortcuts["fileshash"],appsettings["fileshash"]).each { |k,v| app.public_send("#{k}=", v) }
   injectfunctions($defaultshortcuts["viewshash"],appsettings["viewshash"]).each { |k,v| app.public_send("#{k}=", v) }
-  construct_dotfile_entry(app)
+  return app
 end
 
 #Put together all necessary dotfile commands for this app
@@ -43,32 +54,48 @@ def construct_dotfile_entry(app)
     end
   end
   dotlines += "#{app.commentmarker*5} Universal Shortcuts end here - do not edit this line/block\n\n"
-  return dotlines
+  return {"dotlines" => dotlines, "commentmarker" => app.commentmarker, "appname" => app.appname, "dotfilelocation" => app.dotfilelocation}
 end
 
 #Print dotfile entry or write directly to dotfile
-def output_dotfile_entry
-  puts "Would you like to (p)rint the output or (w)rite directly to the dotfile/s?"
-  answer = gets.chomp
-  case(answer)
+def output_dotfile_entry(dotfile_entry)
+  answer = ""
+  until answer == "p" || answer == "w"
+    puts "Would you like to (p)rint the output or (w)rite directly to the dotfile/s?"
+    #answer = gets.chomp
+    answer = "w"
+  end
+  case answer
   when "p"
-    puts dotlines
+    puts "print"
+    puts dotfile_entry["dotlines"]
   when "w"
+    puts "write"
+
     #Qutebrowser requires direct user configuations via file config.py. Create file if it doesn't exist and load existing user settings.
-    if File.file?("#{ENV['HOME']}/.config/qutebrowser/config.py") == false
-      configfile = File.new("#{ENV['HOME']}/.config/qutebrowser/config.py")
+    if File.file?("#{ENV['HOME']}/.config/qutebrowser/config.py") == false && $json_file.include?("qutebrowser")
+      puts "file not found"
+      configfile = File.new("#{ENV['HOME']}/.config/qutebrowser/config.py", "w")
       configfile.puts("config.load_autoconfig()\n\n")
       configfile.close
     end
-    f = File.open(File.expand_path(app.dotfilelocation), 'a')
-    f.write(dotlines)
+
+    f = File.open(File.expand_path(dotfile_entry["dotfilelocation"]), 'r')
+
+    beginmarker = "#{dotfile_entry["commentmarker"]*5} Universal Shortcuts start here - do not edit this line/block"
+    endmarker = "#{dotfile_entry["commentmarker"]*5} Universal Shortcuts end here - do not edit this line/block"
+    puts f.class
+    puts find_previous_dotlines(f, beginmarker)
+    puts find_previous_dotlines(f, endmarker)
+    #f.write(dotlines["dotlines"])
     f.close
+
   end
 end
 
+$json_file = "apps/vim.json"
+#ARGV.each do |json_file|
+  output_dotfile_entry(construct_dotfile_entry(create_app_object($json_file)))
+#end
 
-#createappobject("vim")
-#createappobject("kitty")
-#createappobject("emacs")
-#createappobject("ranger")
-#createappobject("qutebrowser")
+

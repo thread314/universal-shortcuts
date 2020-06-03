@@ -1,5 +1,6 @@
 {
   "appvariables": {
+    "appname": "Qutebrowser",
     "unmapcommand": "",
     "mapcommand": "config.bind('<?>', '<!>')",
     "dotfilelocation": "~/.config/qutebrowser/config.py",
